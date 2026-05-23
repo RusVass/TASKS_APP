@@ -15,7 +15,7 @@ A full-stack Todo application with categories, built with React + Express + SQLi
 ```
 todo-app/
 ├── frontend/          React + Vite app (deployed on Vercel)
-├── backend/           Express API (runs locally)
+├── backend/           Express API (deployed on Render, also runs locally via Docker)
 │   └── Dockerfile
 ├── docker-compose.yml
 └── README.md
@@ -23,13 +23,12 @@ todo-app/
 
 ## Deployment
 
-| Layer | Hosting |
-|---|---|
-| Frontend | [Vercel](https://tasks-app-iota.vercel.app) |
-| Backend | **Local only** — runs on your machine via Docker or Node.js |
+| Layer | Hosting | URL |
+|---|---|---|
+| Frontend | [Vercel](https://tasks-app-iota.vercel.app) | https://tasks-app-iota.vercel.app |
+| Backend | [Render](https://tasks-app-ivll.onrender.com) | https://tasks-app-ivll.onrender.com |
 
-The backend is not publicly hosted. SQLite is a local file database by design.  
-To use the deployed frontend, start the backend locally — the frontend connects to `http://localhost:3001`.
+The deployed Vercel frontend connects to the Render backend automatically via the `VITE_API_URL` environment variable set in Vercel.
 
 ---
 
@@ -84,9 +83,13 @@ Frontend runs on **http://localhost:5173**.
 
 ## Using the deployed frontend with a local backend
 
-1. Start the backend (Docker or Node.js) — it must be on port 3001.
+1. Start the backend locally (Docker or Node.js) — it must be on port 3001.
 2. Open [https://tasks-app-iota.vercel.app](https://tasks-app-iota.vercel.app) in your browser.
-3. The deployed frontend connects to `http://localhost:3001` automatically.
+3. The frontend connects to the Render backend in production. To override it locally, create `frontend/.env.local`:
+
+```
+VITE_API_URL=http://localhost:3001
+```
 
 ---
 
