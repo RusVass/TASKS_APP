@@ -8,7 +8,12 @@ const app = express();
 const PORT = 3001;
 
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://tasks-app-iota.vercel.app',
+  ],
+}));
 
 app.use('/todos', todosRouter);
 app.use('/categories', categoriesRouter);

@@ -1,0 +1,14 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3001'
+    environment:
+      DB_PATH: /app/data/todos.db
+    volumes:
+      - todo-data:/app/data
+
+volumes:
+  todo-data:

@@ -1,8 +1,9 @@
 import Database from 'better-sqlite3';
 import path from 'path';
 
-// Store the database file one level up from src/ so it isn't inside source code
-const DB_PATH = path.join(__dirname, '../../todos.db');
+// DB_PATH env var lets Docker mount a persistent volume directory.
+// Falls back to the project root (next to package.json) for local dev.
+const DB_PATH = process.env.DB_PATH || path.join(__dirname, '../../todos.db');
 
 // better-sqlite3 is synchronous — one connection is enough for this app
 const db = new Database(DB_PATH);
