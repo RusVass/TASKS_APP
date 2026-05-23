@@ -5,7 +5,7 @@ import categoriesRouter from './routes/categories.routes';
 import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
-const PORT = 3001;
+const PORT = parseInt(process.env.PORT ?? '3001', 10);
 
 app.use(express.json());
 app.use(cors({
