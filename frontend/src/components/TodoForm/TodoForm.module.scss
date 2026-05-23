@@ -1,0 +1,129 @@
+.form {
+  margin-bottom: 32px;
+}
+
+.fields {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input {
+  padding: 10px 14px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 15px;
+  width: 320px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+  }
+
+  &.inputError {
+    border-color: var(--color-danger);
+  }
+}
+
+.select {
+  padding: 10px 14px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 15px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  min-width: 160px;
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+  }
+
+  &.inputError {
+    border-color: var(--color-danger);
+  }
+}
+
+.button {
+  padding: 10px 24px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.15s;
+
+  &:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.fieldError {
+  font-size: 12px;
+  color: var(--color-danger);
+}
+
+.apiError {
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+
+@media (max-width: 560px) {
+  .fields {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .fieldGroup {
+    width: 100%;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .select {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+    align-self: stretch;
+    text-align: center;
+  }
+}
