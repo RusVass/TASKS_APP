@@ -81,9 +81,13 @@ export function useTodos(): UseTodosReturn {
         setError('Failed to complete todo.');
       });
 
-      // After 5s the completed todo is removed from the list; Undo reverts it before that
+      // After 5s: remove from UI and delete from backend.
+      // Undo (via dismissSnackbar) clears the timer so neither happens.
       showSnackbar(`"${todo.text}" marked as complete`, { type: 'complete', todo }, () => {
         setTodos((prev) => prev.filter((t) => t.id !== todo.id));
+        apiDelete(todo.id).catch(() => {
+          setError('Failed to remove completed todo.');
+        });
       });
     },
     [showSnackbar]
